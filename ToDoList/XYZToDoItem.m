@@ -9,6 +9,16 @@
 #import "XYZToDoItem.h"
 
 @implementation XYZToDoItem
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _completed = NO;
+        _creationDate = [NSDate date];
+    }
+    
+    return self;
+}
 
 - (id)initWithCoder:(NSCoder *)coder
 {
