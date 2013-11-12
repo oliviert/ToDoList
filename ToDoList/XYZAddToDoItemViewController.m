@@ -11,6 +11,7 @@
 @interface XYZAddToDoItemViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
+@property (weak, nonatomic) IBOutlet UIDatePicker *reminderDate;
 
 @end
 
@@ -22,6 +23,18 @@
     if (self.textField.text.length > 0) {
         self.toDoItem = [[XYZToDoItem alloc] init];
         self.toDoItem.itemName = self.textField.text;
+        self.toDoItem.reminderDate = self.reminderDate.date;
+        
+        NSLog(@"reminderDate: %@", self.toDoItem.reminderDate);
+        
+        UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+        
+        localNotif.fireDate = self.toDoItem.reminderDate;
+        localNotif.timeZone = [NSTimeZone defaultTimeZone];
+        localNotif.alertBody = self.toDoItem.itemName;
+        localNotif.applicationIconBadgeNumber = 1;
+        
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
     }
 }
 

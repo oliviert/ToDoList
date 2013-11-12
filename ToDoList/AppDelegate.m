@@ -12,7 +12,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    
+    if (localNotif) {
+        application.applicationIconBadgeNumber -= localNotif.applicationIconBadgeNumber;
+    }
+    
     return YES;
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notif
+{
+    application.applicationIconBadgeNumber -= notif.applicationIconBadgeNumber;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

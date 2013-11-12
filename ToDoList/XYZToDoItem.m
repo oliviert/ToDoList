@@ -27,6 +27,7 @@
         _itemName = [coder decodeObjectForKey:@"itemName"];
         _completed = [coder decodeBoolForKey:@"completed"];
         _creationDate = [coder decodeObjectForKey:@"creationDate"];
+        _reminderDate = [coder decodeObjectForKey:@"reminderDate"];
     }
     
     return self;
@@ -37,6 +38,8 @@
     [coder encodeObject:self.itemName forKey:@"itemName"];
     [coder encodeBool:self.completed forKey:@"completed"];
     [coder encodeObject:self.creationDate forKey:@"creationDate"];
+    [coder encodeObject:self.reminderDate forKey:@"reminderDate"];
+
 }
 
 
